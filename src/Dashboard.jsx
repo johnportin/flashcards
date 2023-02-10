@@ -1,23 +1,37 @@
 import './Dashboard.css';
 import { useState } from 'react';
-import Flashcard from './Flashcard.jsx';
 import Controls from './Controls.jsx';
+import Flashcard from './Flashcard.jsx';
+import History from './History.jsx';
 
 export default function Dashboard() {
     const [index, setIndex] = useState(0);
+    const [isRevealed, setIsRevealed] = useState(false);
+
      // Create array of Flashcard components from data
     const flashcards = [];
     data.forEach((datum) => {
-    flashcards.push(<Flashcard>{datum}</Flashcard>)
+    flashcards.push(<Flashcard show={isRevealed}>{datum}</Flashcard>)
     });
 
     function onForwardClick() {
         setIndex((((index + 1) % data.length) + data.length) % data.length);
+        handleReset();
     };
 
     function onBackwardClick() {
         setIndex((((index - 1) % data.length) + data.length) % data.length);
+        handleReset();
     };
+
+    function handleRevealClick() {
+        setIsRevealed(!isRevealed);
+        console.log('changing reveal');
+    }
+
+    function handleReset() {
+        setIsRevealed(false);
+    }
 
     return (
         <>
@@ -26,6 +40,11 @@ export default function Dashboard() {
                 index={index} 
                 forward={onForwardClick} 
                 backward={onBackwardClick} 
+                handleRevealClick={handleRevealClick}
+            />
+            <History
+                data={data}
+                index={index}
             />
         </>
     );
@@ -35,16 +54,16 @@ const data = [
     {
         question: 'question1',
         answer: 'answer1',
-        revealed: true
+        seen: false
     },
     {
         question: 'question2',
         answer: 'answer2',
-        revealed: false
+        seen: false
     },
     {
         question: 'question3',
         answer: 'answer3',
-        revealed: true
+        seen: true
     }
   ]

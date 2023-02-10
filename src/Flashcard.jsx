@@ -1,10 +1,9 @@
 import './Flashcard.css';
 import { useState } from 'react';
 
-export default function Flashcard({ children }) {
-    const [isRevealed, setIsRevealed] = useState(children.revealed);
+export default function Flashcard({ show, children }) {
     return (
-        isRevealed ? <p>{children.answer}</p> : <p>{children.question}</p>
+        show ? <p>{children.answer}</p> : <p>{children.question}</p>
     );
 }
 
