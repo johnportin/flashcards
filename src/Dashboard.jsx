@@ -7,12 +7,12 @@ import History from './History.jsx';
 export default function Dashboard() {
     const [index, setIndex] = useState(0);
     const [isRevealed, setIsRevealed] = useState(false);
-    // const [data, setData] = useState(data);
+    const [data, setData] = useState(questions);
 
      // Create array of Flashcard components from data
     const flashcards = [];
-    data.forEach((datum) => {
-    flashcards.push(<Flashcard show={isRevealed}>{datum}</Flashcard>)
+    questions.forEach((datum) => {
+    flashcards.push(<Flashcard>{datum}</Flashcard>)
     });
 
     function onForwardClick() {
@@ -27,8 +27,17 @@ export default function Dashboard() {
 
     function handleRevealClick() {
         setIsRevealed(!isRevealed);
-
-        console.log('changing reveal');
+        const nextData = data.map((datum, i) => {
+            if (i === index) {
+                return {
+                    ...datum, 
+                    seen: !datum.seen
+                }} else {
+                    return datum
+                }
+            }
+        );
+        setData(nextData);
     }
 
     function handleReset() {
@@ -52,7 +61,7 @@ export default function Dashboard() {
     );
 }
 
-const data = [
+const questions = [
     {
         id: 1,
         question: 'question1',

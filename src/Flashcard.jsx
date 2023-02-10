@@ -1,9 +1,9 @@
 import './Flashcard.css';
 import { useState } from 'react';
 
-export default function Flashcard({ show, children }) {
+export default function Flashcard({ children }) {
     return (
-        show ? <p>{children.answer}</p> : <p>{children.question}</p>
+        children.seen ? <p>{children.answer}</p> : <p>{children.question}</p>
     );
 }
 
