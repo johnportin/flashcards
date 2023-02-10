@@ -1,0 +1,8 @@
+.flashcard-history-unseen-container {
+    border: 2px solid black;
+    background-color: red;
+}
+.flashcard-history-seen-container {
+    border: 2px solid black;
+    background-color: green;
+}

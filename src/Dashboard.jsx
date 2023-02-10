@@ -7,6 +7,7 @@ import History from './History.jsx';
 export default function Dashboard() {
     const [index, setIndex] = useState(0);
     const [isRevealed, setIsRevealed] = useState(false);
+    // const [data, setData] = useState(data);
 
      // Create array of Flashcard components from data
     const flashcards = [];
@@ -26,6 +27,7 @@ export default function Dashboard() {
 
     function handleRevealClick() {
         setIsRevealed(!isRevealed);
+
         console.log('changing reveal');
     }
 
@@ -52,16 +54,19 @@ export default function Dashboard() {
 
 const data = [
     {
+        id: 1,
         question: 'question1',
         answer: 'answer1',
         seen: false
     },
     {
+        id: 2,
         question: 'question2',
         answer: 'answer2',
         seen: false
     },
     {
+        id: 3,
         question: 'question3',
         answer: 'answer3',
         seen: true
