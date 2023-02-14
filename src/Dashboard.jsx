@@ -11,8 +11,8 @@ export default function Dashboard() {
 
      // Create array of Flashcard components from data
     const flashcards = [];
-    questions.forEach((datum) => {
-    flashcards.push(<Flashcard data={datum}></Flashcard>)
+    data.forEach((datum) => {
+        flashcards.push(<Flashcard data={datum}></Flashcard>)
     });
 
     function onForwardClick() {
