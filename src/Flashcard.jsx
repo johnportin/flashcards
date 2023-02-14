@@ -1,9 +1,18 @@
 import './Flashcard.css';
-import { useState } from 'react';
 
-export default function Flashcard({ children }) {
+export default function Flashcard({ data }) {
     return (
-        children.seen ? <p>{children.answer}</p> : <p>{children.question}</p>
+        <div style={{
+            borderStyle: 'solid'
+        }}>
+            <p>
+                {data.question}
+            </p>
+            <p className={ data.seen ? 'flashcard-visible' : 'flashcard-hidden' }>
+                {data.answer}
+            </p>
+        </div>
+        
     );
 }
 

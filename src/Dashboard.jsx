@@ -12,7 +12,7 @@ export default function Dashboard() {
      // Create array of Flashcard components from data
     const flashcards = [];
     questions.forEach((datum) => {
-    flashcards.push(<Flashcard>{datum}</Flashcard>)
+    flashcards.push(<Flashcard data={datum}></Flashcard>)
     });
 
     function onForwardClick() {
@@ -26,7 +26,6 @@ export default function Dashboard() {
     };
 
     function handleRevealClick() {
-        setIsRevealed(!isRevealed);
         const nextData = data.map((datum, i) => {
             if (i === index) {
                 return {

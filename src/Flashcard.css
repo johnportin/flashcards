@@ -1,0 +1,9 @@
+.flashcard-hidden {
+    display: block;
+    visibility: hidden;
+}
+
+.flashcard-visible {
+    display: block;
+    visibility: visible;
+}
