@@ -17,12 +17,10 @@ export default function Dashboard() {
 
     function onForwardClick() {
         setIndex((((index + 1) % data.length) + data.length) % data.length);
-        handleReset();
-    };
+Z    };
 
     function onBackwardClick() {
         setIndex((((index - 1) % data.length) + data.length) % data.length);
-        handleReset();
     };
 
     function handleRevealClick() {
@@ -40,7 +38,13 @@ export default function Dashboard() {
     }
 
     function handleReset() {
-        setIsRevealed(false);
+        const nextData = data.map((datum) => {
+            return {
+                ...datum,
+                seen: false
+            }
+        });
+        setData(nextData);
     }
 
     return (
@@ -51,6 +55,7 @@ export default function Dashboard() {
                 forward={onForwardClick} 
                 backward={onBackwardClick} 
                 handleRevealClick={handleRevealClick}
+                handleReset={handleReset}
             />
             <History
                 data={data}
